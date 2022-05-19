@@ -9,17 +9,23 @@ public class SoundBoardAdded extends DomainEvent {
 
     private final Brand brand;
     private final Model model;
+    private final Integer volumeLevel;
     private final SoundBoardID entityID;
 
 
-    public SoundBoardAdded(SoundBoardID entityID, Brand brand, Model model) {
+    public SoundBoardAdded(SoundBoardID entityID, Brand brand, Model model, Integer volumeLevel) {
         super("davidreina.soundboard.soundboardadded");
         this.brand = brand;
         this.model = model;
         this.entityID = entityID;
+        this.volumeLevel = volumeLevel;
     }
     public SoundBoardID getEntityID(){
         return entityID;
+    }
+
+    public Integer volumeLevel() {
+        return volumeLevel;
     }
 
     public Brand brand() {

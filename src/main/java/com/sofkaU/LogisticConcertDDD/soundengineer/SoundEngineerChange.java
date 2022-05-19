@@ -23,10 +23,14 @@ public class SoundEngineerChange extends EventChange {
         apply((SoundBoardAdded event) ->{
             var soundBoardBrand = event.brand();
             var soundBoardModel = event.model();
+            var soundBoardVolumeLevel = event.volumeLevel();
             if (soundBoardBrand == null || soundBoardModel == null){
                 throw new IllegalArgumentException("SoundBoard parameter cannot be null");
             }
-            SoundBoard soundBoard = new SoundBoard(event.getEntityID(),event.brand(),event.model());
+            if (soundBoardVolumeLevel <= 0){
+                throw new IllegalArgumentException("SoundBoard volume cannot be less than zero");
+            }
+            SoundBoard soundBoard = new SoundBoard(event.getEntityID(),event.brand(),event.model(), event.volumeLevel());
         });
 
         apply((EquipmentAdded event) -> {

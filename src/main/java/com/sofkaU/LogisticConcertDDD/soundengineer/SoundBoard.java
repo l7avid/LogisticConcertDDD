@@ -11,11 +11,13 @@ public class SoundBoard extends Entity<SoundBoardID> {
 
     private Brand brand;
     private Model model;
+    private Integer volumeLevel;
 
-    public SoundBoard(SoundBoardID entityId, Brand brand, Model model) {
+    public SoundBoard(SoundBoardID entityId, Brand brand, Model model, Integer volumeLevel) {
         super(entityId);
         this.brand = brand;
         this.model = model;
+        this.volumeLevel = volumeLevel;
     }
 
     public void updateBrand(Brand brand) {
@@ -24,6 +26,10 @@ public class SoundBoard extends Entity<SoundBoardID> {
 
     public void updateModel(Model model) {
         this.model = Objects.requireNonNull(model);
+    }
+
+    public void adjustVolumeLevel(Integer volumeLevel){
+        this.volumeLevel = Objects.requireNonNull(volumeLevel);
     }
 
     public Brand brand() {

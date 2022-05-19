@@ -35,11 +35,12 @@ public class SoundEngineer extends AggregateEvent<SoundEngineerID> {
         return soundEngineer;
     }
 
-    public void addSoundBoard(SoundBoardID entityId, Brand brand, Model model){
+    public void addSoundBoard(SoundBoardID entityId, Brand brand, Model model, Integer volumeLevel){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(brand);
         Objects.requireNonNull(model);
-        appendChange(new SoundBoardAdded(entityId, brand, model)).apply();
+        Objects.requireNonNull(volumeLevel);
+        appendChange(new SoundBoardAdded(entityId, brand, model, volumeLevel)).apply();
     }
 
     public Name name() {
